@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .chat-window {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+    }
+
+    .chat-log {
+      flex-grow: 1;
+      overflow-y: scroll;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      margin-left: 20px;
+    }
+
+    .message-content {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .user-message .message-content {
+      background-color: #aeaaaa2f;
+      color: #0d0c0c;
+      text-align: left;
+    }
+
+    .bot-message .message-content {
+      background-color: #95919171;
+      color: #333;
+      text-align: left;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+    }
+
+    .input-container input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .input-container button {
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .highlight {
+      color: red;
+    }
+
+    @media (max-width: 768px) {
+      .input-container {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-window">
+    <div class="chat-log" id="chatLog"></div>
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="আপনার মেসেজটি টাইপ করুন">
+      <button id="sendButton">প্রেরণ করুন</button>
+    </div>
+  </div>
+
+  <script>
+    const chatLog = document.getElementById('chatLog');
+    const userInput = document.getElementById('userInput');
+    const sendButton = document.getElementById('sendButton');
+
+    userInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        sendButton.click();
+      }
+    });
+
+    sendButton.addEventListener('click', () => {
+      const userMessage = userInput.value;
+      addMessage(userMessage, 'user');
+      respondToUser(userMessage);
+      userInput.value = '';
+    });
+
+    function addMessage(message, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', sender + '-message');
+      const messageContent = document.createElement('div');
+      messageContent.classList.add('message-content');
+      messageContent.innerHTML = message;
+      messageDiv.appendChild(messageContent);
+      chatLog.appendChild(messageDiv);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function respondToUser(userMessage) {
+      userMessage = userMessage.toLowerCase();
+      
+      const responses = {
+          'হাল খবর?': 'আমি ভালো আছি, আপনি কেমন আছেন?',
+          'hi': 'আমি ভালো আছি, আপনি কেমন আছেন?',
+          'বৈষ্ণব পদাবলি': 'বৈষ্ণব পদাবলি বা বৈষ্ণব পদাবলী বৈষ্ণব ধর্মতত্ত্বের রসভাষ্য নামে খ্যাত এক শ্রেণীর ধর্মসঙ্গীত সংগ্রহ,<br>সূচনা ঘটে চর্তুদশ শতকে বিদ্যাপতি ও চণ্ডীদাস-এর সময়ে, তবে ষোড়শ শতকে এই সাহিত্যের বিকাশ হয়।',
+      };
+
+      const response = responses[userMessage] || 'দুঃখিত, আমি বুঝতে পারছি না।';
+      addMessage(highlightMatchingWords(userMessage, response), 'bot');
+    }
+
+    function highlightMatchingWords(userInput, response) {
+      const userWords = userInput.split(' ');
+      userWords.forEach(word => {
+        if (response.includes(word)) {
+          response = response.replace(new RegExp(word, 'g'), `<span class="highlight">${word}</span>`);
+        }
+      });
+      return response;
+    }
+  </script>
+</body>
+</html>

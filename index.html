@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot Home</title>
+  <style>
+    body {
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #007bff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Our Chatbot</h1>
+    <p>Have a conversation with our smart chatbot</p>
+    <button onclick="startChat()">Start Chat</button>
+    <button onclick="viewInstructions()">Instructions</button>
+    <button onclick="viewAllKeywords()">All Keywords</button>
+  </div>
+
+  <script>
+    function startChat() {
+      // Redirect to the chatbot page
+      window.location.href = "chatbot.html";
+    }
+
+    function viewInstructions() {
+      // Redirect to the instruction page
+      window.location.href = "instruction.html";
+    }
+
+    function viewAllKeywords() {
+      // Redirect to the all keywords page
+      window.location.href = "all_keywords.html";
+    }
+  </script>
+</body>
+</html>
