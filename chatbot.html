@@ -19,20 +19,25 @@ body {
   }
 }
 
-.chat-window {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-left: auto;
-  height: 100%;
-}
-
-@media (max-width: 600px) {
+body {
   .chat-window {
-    margin-left: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: auto;
+    height: 100%;
   }
 }
+
+@media (max-width: 576px) {
+  body {
+    .chat-window {
+      margin-left: 0;
+    }
+  }
+}
+
 
 .chat-log {
   flex-grow: 1;
