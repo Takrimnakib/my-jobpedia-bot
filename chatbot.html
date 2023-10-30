@@ -13,7 +13,7 @@
       height: 100vh;
     }
 
-  .chat-window {
+    .chat-window {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -33,6 +33,17 @@
       padding: 20px;
       box-sizing: border-box;
       margin-bottom: 20px;
+    }
+
+    .message {
+      margin-bottom: 20px;
+    }
+
+    .message-content {
+      padding: 15px;
+      border-radius: 15px;
+      max-width: 70%;
+      font-size: 28px; /* Increase font size */
     }
 
     .user-message .message-content {
@@ -124,6 +135,9 @@
 
       chatLog.scrollTop = chatLog.scrollHeight;
     }
+
+    function respondToUser(userMessage) {
+      userMessage = userMessage.toLowerCase();
 
     function respondToUser(userMessage) {
       userMessage = userMessage.toLowerCase();
