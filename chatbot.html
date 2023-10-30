@@ -18,8 +18,10 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      margin-left: 20px;
-      height: 100%;
+      margin: auto; /* Center chat window horizontally */
+      max-width: 800px; /* Set maximum width for chat window */
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .chat-log {
@@ -35,13 +37,13 @@
 
     .message {
       margin-bottom: 20px;
-      margin-left: 20px;
     }
 
     .message-content {
       padding: 15px;
       border-radius: 15px;
       max-width: 70%;
+      font-size: 18px; /* Increase font size */
     }
 
     .user-message .message-content {
@@ -60,12 +62,12 @@
 
     .input-container {
       display: flex;
-      align-items: center;
+      justify-content: center; /* Center input horizontally */
+      align-items: center; /* Center input vertically */
       padding: 10px;
       background-color: #fff;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-left: 20px;
     }
 
     .input-container input[type="text"] {
@@ -74,6 +76,8 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       outline: none;
+      font-size: 18px; /* Increase font size */
+      max-width: 70%; /* Make the input box shorter */
     }
 
     .input-container button {
@@ -159,3 +163,4 @@
   </script>
 </body>
 </html>
+
