@@ -6,11 +6,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f1f1f1;
+      background-color: #007bff;
       margin: 0;
       padding: 0;
       display: flex;
       height: 100vh;
+      max-width: 500px; /* Reduce the width of the body */
+      margin: 0 auto; /* Center the body horizontally */
     }
 
     .chat-window {
@@ -19,7 +21,7 @@
       flex-direction: column;
       justify-content: flex-end;
       margin: auto; /* Center chat window horizontally */
-      max-width: 800px; /* Set maximum width for chat window */
+      max-width: 500px; /* Set maximum width for chat window */
       padding: 20px;
       box-sizing: border-box;
     }
@@ -29,10 +31,10 @@
       overflow-y: scroll;
       background-color: #e6e6e6;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
       padding: 20px;
       box-sizing: border-box;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .message {
@@ -94,7 +96,7 @@
       color: red;
     }
   </style>
-</head>
+  </head>
 <body>
   <div class="chat-window">
     <div class="chat-log" id="chatLog"></div>
@@ -149,8 +151,7 @@
       const response = responses[userMessage] || 'দুঃখিত, আমি বুঝতে পারছি না।';
       addMessage(highlightMatchingWords(userMessage, response), 'bot');
     }
-
-    function highlightMatchingWords(userInput, response) {
+function highlightMatchingWords(userInput, response) {
       const userWords = userInput.split(' ');
       userWords.forEach(word => {
         if (response.includes(word)) {
@@ -163,4 +164,5 @@
 </body>
 </html>
       
-      
+       
+  
